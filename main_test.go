@@ -8,7 +8,7 @@ import (
 
 func executeRequest(req *http.Request) *httptest.ResponseRecorder {
     rr := httptest.NewRecorder()
-    handler := http.HandlerFunc("/", Index)    
+    handler := http.HandlerFunc(Index)    
     handler.Router.ServeHTTP(rr, req)
 
     return rr
