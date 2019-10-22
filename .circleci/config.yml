@@ -39,7 +39,7 @@
        - run:
           name: "Start Service and Check That it’s Running"
           command: |
-            docker run -d -p 8080:8080 --name go-docker-api-c go-docker-api
+            docker run -d -p 8080:8080 --name go-docker-api-c go-docker-api -v /bin/bash
             docker ps
             #curl http://localhost:8080
             #curl --retry 10 --retry-connrefused http://localhost:8080/status

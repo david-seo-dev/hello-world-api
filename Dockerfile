@@ -20,7 +20,7 @@ RUN GOARCH=amd64 CGO_ENABLED=0 GOOS=linux go build -o main .
 # === STAGE : RUN GOLANG EXE
 
 # Scratch base image to reduce size
-FROM golang:alpine
+FROM scratch
 
 # Set the Current Working Directory to go's default location
 WORKDIR ~/app
