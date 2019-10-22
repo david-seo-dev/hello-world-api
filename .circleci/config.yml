@@ -16,7 +16,9 @@
             export PATH=$PATH:$GOROOT/bin:$GOPATH:$GOBIN
             mkdir src
             go get
-
+            go build -o main .
+            curl http://localhost:8080
+            curl http://localhost:8080/status
        - setup_remote_docker:
           docker_layer_caching: false
         
