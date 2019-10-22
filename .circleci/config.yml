@@ -7,3 +7,5 @@
        - checkout
        - run: echo "A first hello"
        - run: git rev-parse HEAD
+       - run: go get
+       - run: docker build -t go-docker
