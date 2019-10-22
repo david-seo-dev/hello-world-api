@@ -10,5 +10,6 @@
        - run: ls
        - run: echo $gopath
        - run: pwd
+       - run: mkdir src
        - run: go get
        - run: docker build -t go-docker
