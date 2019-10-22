@@ -10,14 +10,11 @@
             export GOPATH=~/project
             export GOBIN=~/project
             export PATH=$PATH:$GOROOT/bin:$GOPATH:$GOBIN
-            go env -w GOPATH=~/project
-            pwd
-            ls
             mkdir src
-            ls
             go version
             go env
             echo $GOPATH
+            go get
        - run: ls
        - run: go version
        - run: go env
