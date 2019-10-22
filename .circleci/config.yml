@@ -6,7 +6,7 @@
      steps:
        - checkout
        - run: | 
-            "echo 'lastcommitsha: '   > metadata"
+            "echo 'lastcommitsha: ' >> metadata"
             git rev-parse HEAD >> metadata
             cat metadata
        - run:
