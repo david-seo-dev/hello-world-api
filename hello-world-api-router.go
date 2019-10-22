@@ -22,8 +22,7 @@ func main() {
  
     router := mux.NewRouter().StrictSlash(true)
     router.HandleFunc("/", Index)
-    router.HandleFunc("/status", Status)
-    router.HandleFunc("/statusjson", StatusJson)
+    router.HandleFunc("/status", StatusJson)
     log.Fatal(http.ListenAndServe(":8080", router))
 
 }
@@ -37,6 +36,7 @@ func StatusJson(w http.ResponseWriter, r *http.Request) {
     fscanner := bufio.NewScanner(file)
     var d string
     var v string
+    var l string
 
     for fscanner.Scan() {
         s := strings.Split(fscanner.Text(), ":")
@@ -44,35 +44,12 @@ func StatusJson(w http.ResponseWriter, r *http.Request) {
             d = s[1]
         } else if strings.TrimRight(s[0], "\n") == "version" {
             v = s[1]
+        } else if strings.TrimRight(s[0], "\n") == "lastcommitsha" {
+            l = s[1]
         }
     }
-    fmt.Println("StatusJson")
-    fmt.Println(d)
-    fmt.Println(v) 
 
     w.Header().Set("Content-Type", "application/json") 
-    user := Return {d, v, "7h7h7h"} 
+    user := Return {d, v, l} 
     json.NewEncoder(w).Encode(user) 
-}
-
-func Status(w http.ResponseWriter, r *http.Request) {
-    file, _ := os.Open("./metadata")
-    fscanner := bufio.NewScanner(file)
-    var status string
-    var desc string
-    var version string
-
-    for fscanner.Scan() {
-        status += fscanner.Text() + "\n"
-        s := strings.Split(fscanner.Text(), ":")
-        if strings.TrimRight(s[0], "\n") == "description" {
-            desc = s[1]
-        } else if strings.TrimRight(s[0], "\n") == "version" {
-            version = s[1]
-        }
-    }
-    fmt.Println(desc)
-    fmt.Println(version) 
-
-    fmt.Fprintf(w, "%s", status)
 }

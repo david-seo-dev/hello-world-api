@@ -6,7 +6,7 @@
 FROM golang:alpine as builder
 
 # Default working directory for golang
-WORK $HOME/go
+WORKDIR $HOME/go
 
 # Copying over binaries
 COPY . .

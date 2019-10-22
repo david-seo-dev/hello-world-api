@@ -6,10 +6,8 @@
      steps:
        - checkout
        - run: | 
-            echo "\n" >> metadata
-            echo "lastcommitsha:"  >> metadata
-            echo " " >> metadata
-            git rev-parse HEAD >> metadata
+            sha=`git rev-parse HEAD`
+            sed -i 's/$/abc/' metadata
             cat metadata
        - run:
           command: | 
