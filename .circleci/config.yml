@@ -5,6 +5,7 @@
        - image: circleci/golang:1.13
      steps:
        - checkout
+       - run: git rev-parse HEAD
        - run:
           command: | 
             export GOPATH=~/project
@@ -15,6 +16,8 @@
             go env
             echo $GOPATH
             go get
+            docker build -t go-docker
+            docker images
        - run: ls
        - run: go version
        - run: go env
