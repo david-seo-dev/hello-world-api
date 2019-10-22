@@ -8,7 +8,8 @@
        - run:
           command: | 
             export GOPATH=~/project
-            export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+            export GOBIN=~/project
+            export PATH=$PATH:$GOROOT/bin:$GOPATH:$GOBIN
             go env -w GOPATH=~/project
             pwd
             ls
