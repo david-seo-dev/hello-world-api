@@ -24,6 +24,8 @@
             # curling the points for maunal test -- however in future would like it to be more automatic
             curl http://localhost:8080
             curl http://localhost:8080/status
+            
+            echo "$DOCKERHUB_USER"
        - setup_remote_docker:
           docker_layer_caching: false
         
