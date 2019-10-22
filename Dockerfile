@@ -32,7 +32,7 @@ COPY --from=builder $HOME/go/main ./
 EXPOSE 8080
 
 # Command to run the executable
-CMD ["./main", "curl http://localhost:8080", "curl http://localhost:8080/status"]
+CMD ["./main"]
 
 # === FINISHED
 
