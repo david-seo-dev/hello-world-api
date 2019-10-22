@@ -5,7 +5,8 @@
        - image: circleci/golang:1.12
      steps:
        - checkout
-       - run: export GOPATH=$HOME/go
+       - run: export GOPATH=~/project/
+       - run: mkdir src
        - run: echo "A first hello"
        - run: git rev-parse HEAD
        - run: ls
@@ -13,7 +14,6 @@
        - run: go env
        - run: echo $gopath
        - run: pwd
-       - run: mkdir src
        - run: go get
        - run: docker build -t go-docker
        - run: docker images
