@@ -4,6 +4,7 @@
      docker:
        - image: circleci/golang:1.12
      steps:
+       - run: cd "/usr/local/go"
        - checkout
        - run: echo "A first hello"
        - run: git rev-parse HEAD
@@ -15,3 +16,4 @@
        - run: mkdir src
        - run: go get
        - run: docker build -t go-docker
+       - run: docker images
