@@ -2,7 +2,7 @@
  jobs:
    build:
      docker:
-       - image: circleci/golang:1.12
+       - image: circleci/golang:1.13
      steps:
        - checkout
        - run:
@@ -16,7 +16,6 @@
             go version
             go env
             echo $GOPATH
-            go install
             go get
        - run: export GOPATH=~/project
        - run: export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
