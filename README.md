@@ -24,3 +24,4 @@ curl localhost:8080/status
  Clean up for docker if multiple unlabelled images/containers are found
  docker container prune
  docker rmi -f $(docker images --quiet --filter "dangling=true")
+
