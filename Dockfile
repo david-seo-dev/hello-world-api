@@ -1,0 +1,19 @@
+# Start from the latest golang base image
+FROM golang:latest
+
+# Set the Current Working Directory to go's default location
+WORKDIR $HOME/go
+
+# Copy the source from the current directory to the Working Directory inside the container
+COPY . .
+# Copying over the dependencies to build
+COPY ./src ./src/
+
+# Build the Go app
+#RUN go build -o main .
+
+# Expose port 8080 to the outside world
+EXPOSE 8080
+
+# Command to run the executable
+CMD ["./main"]
