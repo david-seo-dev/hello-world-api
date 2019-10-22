@@ -7,7 +7,8 @@
        - checkout
        - run: | 
             sha=`git rev-parse HEAD`
-            sed -i 's/$/abc/' metadata
+            echo $sha
+            sed "s/$/$sha/" metadata
             cat metadata
        - run:
           command: | 
