@@ -1,3 +1,11 @@
+package main
+
+import (
+    "os"
+    "log"
+    "testing"
+)
+
 func TestIndex(t *testing.T) {
     req, _ := http.NewRequest("GET", "/", nil)
     response := executeRequest(req)
