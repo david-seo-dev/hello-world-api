@@ -18,17 +18,6 @@
             go version
             go env
             echo $GOPATH
-            go get
-       - run: export GOPATH=~/project
-       - run: export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-       - run: ls
-       - run: mkdir src
-       - run: echo "A first hello"
-       - run: git rev-parse HEAD
-       - run: ls
-       - run: go version
-       - run: go env
-       - run: echo $gopath
        - run: pwd
        - run: go get
        - run: docker build -t go-docker
