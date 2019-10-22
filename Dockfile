@@ -2,18 +2,25 @@
 FROM golang:latest
 
 # Set the Current Working Directory to go's default location
-WORKDIR $HOME/go
+WORKDIR ~/app
 
-# Copy the source from the current directory to the Working Directory inside the container
-COPY . .
-# Copying over the dependencies to build
-COPY ./src ./src/
-
-# Build the Go app
-#RUN go build -o main .
+# Copying over the compiled executable int current app directory
+COPY ./output .
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
 
 # Command to run the executable
 CMD ["./main"]
+
+
+# If you wanted to build the go app inside the container then do the following:
+# Set the Current Working Directory to go's default location
+# WORKDIR $HOME/go
+# Copy over the .go file
+# COPY . .
+# Copy over the dependencies to build
+# COPY ./src ./src/
+# Build the Go app
+# RUN go build -o main .
+# Then expose 8080 and run CMD ["./main"] as above
