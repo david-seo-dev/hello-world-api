@@ -5,7 +5,9 @@
        - image: circleci/golang:1.12
      steps:
        - checkout
-       - run: export GOPATH=~/project/
+       - run: export GOPATH=~/project/go
+       - run: export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+       - run: cd go
        - run: mkdir src
        - run: echo "A first hello"
        - run: git rev-parse HEAD
