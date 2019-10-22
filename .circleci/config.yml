@@ -17,6 +17,8 @@
             mkdir src
             go get
             go build -o main .
+            ls
+            ./main
             curl http://localhost:8080
             curl http://localhost:8080/status
        - setup_remote_docker:
