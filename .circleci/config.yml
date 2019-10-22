@@ -9,6 +9,7 @@
           command: | 
             export GOPATH=~/project
             export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+            pwd
             ls
             mkdir src
             ls
