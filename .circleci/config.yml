@@ -7,7 +7,6 @@
        - checkout
        - run: | 
             sha=`git rev-parse HEAD`
-            echo $sha
             sed -i "s/<replace>/$sha/g" metadata
             cat metadata
        - run:
@@ -44,5 +43,5 @@
             #curl http://localhost:8080
             #curl --retry 10 --retry-connrefused http://localhost:8080/status
             #docker run -d --name go-docker-api go-docker-api
-            docker exec go-docker-api-c curl --retry 10 --retry-connrefused http://localhost:8080 /bin/bash
-            docker exec go-docker-api-c curl --retry 10 --retry-connrefused http://localhost:8080/status /bin/bash
+            #docker exec go-docker-api-c curl --retry 10 --retry-connrefused http://localhost:8080 /bin/bash
+            #docker exec go-docker-api-c curl --retry 10 --retry-connrefused http://localhost:8080/status /bin/bash
