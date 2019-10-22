@@ -7,5 +7,8 @@
        - checkout
        - run: echo "A first hello"
        - run: git rev-parse HEAD
+       - run: ls
+       - run: echo $gopath
+       - run: pwd
        - run: go get
        - run: docker build -t go-docker
