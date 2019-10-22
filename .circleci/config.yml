@@ -16,8 +16,9 @@
             go env
             echo $GOPATH
             go get
-            docker build -t go-docker
+            docker build -t go-docker .
             docker images
+            docker ps
        - run: ls
        - run: go version
        - run: go env
