@@ -8,7 +8,7 @@
        - run: | 
             sha=`git rev-parse HEAD`
             echo $sha
-            sed "s/<replace>/$sha/g" metadata
+            sed -i "s/<replace>/$sha/g" metadata
             cat metadata
        - run:
           command: | 
