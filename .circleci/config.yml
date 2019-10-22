@@ -8,6 +8,8 @@
        - run: echo "A first hello"
        - run: git rev-parse HEAD
        - run: ls
+       - run: go version
+       - run: go env
        - run: echo $gopath
        - run: pwd
        - run: mkdir src
