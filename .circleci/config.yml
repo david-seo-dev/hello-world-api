@@ -40,7 +40,7 @@
           command: |
             docker run -d -p 8080:8080 --name go-docker-api-c go-docker-api
             docker ps
-            curl --retry 10 --retry-connrefused http://localhost:8080
-            curl --retry 10 --retry-connrefused http://localhost:8080/status
+            curl --retry 10 http://localhost:8080
+            curl --retry 10 http://localhost:8080/status
             #docker exec go-docker-api-c curl --retry 10 --retry-connrefused http://localhost:8080
             #docker exec go-docker-api-c curl --retry 10 --retry-connrefused http://localhost:8080/status
