@@ -3,6 +3,7 @@ hello world api in golang with docker
 
 
 If you would like to run this maunal, these are the pre-steps to run.
+
 go get //Make sure your GOPATH is properly configured or you have the .go files in the default location $HOME/go
 go build -o main api.go
 
@@ -10,6 +11,7 @@ docker build -t go-docker . //Make sure you have the Dockerfile in the same dire
 docker run -d -p 8080:8080 go-docker
 
 To do a warm up run the following curl commands
+
 curl localhost:8080
   Hello, World
 curl localhost:8080/status
@@ -22,4 +24,3 @@ curl localhost:8080/status
  Clean up for docker if multiple unlabelled images/containers are found
  docker container prune
  docker rmi -f $(docker images --quiet --filter "dangling=true")
- 
