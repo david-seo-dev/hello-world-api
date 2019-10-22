@@ -5,6 +5,16 @@
        - image: circleci/golang:1.12
      steps:
        - checkout
+       - command: | 
+          export GOPATH=~/project
+          export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+          ls
+          mkdir src
+          ls
+          go version
+          go env
+          echo $GOPATH
+          go get
        - run: export GOPATH=~/project
        - run: export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
        - run: ls
