@@ -9,6 +9,7 @@
           command: | 
             export GOPATH=~/project
             export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+            go env -w GOPATH=~/project
             pwd
             ls
             mkdir src
