@@ -2,6 +2,7 @@ package main
 
 import (
     "testing"
+    "http"
 )
 
 func TestIndex(t *testing.T) {
