@@ -3,9 +3,10 @@
    build:
      docker:
        - image: circleci/golang:1.12
-     working_directory: ~/usr/local/go
+     working_directory: ~/
      steps:
        - checkout
+       - run: export GOPATH=$HOME/go
        - run: echo "A first hello"
        - run: git rev-parse HEAD
        - run: ls
