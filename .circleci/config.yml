@@ -39,14 +39,16 @@
             sudo mv /tmp/docker/* /usr/bin --force
        - run: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker build -t go-docker-api .
+            docker build -t go-docker-api:latest .
             docker version
             docker images
             docker ps
 
        - run:
-          name: "Start Service and Check That it’s Running"
+          name: Publish Docker Image to Docker Hub
           command: |
+            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push $IMAGE_NAME:latest
             #docker run -d -p 8080:8080 --name go-docker-api-c go-docker-api
             #docker ps
             #curling into the docker remote environment doesn't seem to work
