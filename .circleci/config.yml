@@ -18,6 +18,10 @@
             go version
             go env
             echo $GOPATH
+       - run: ls
+       - run: go version
+       - run: go env
+       - run: echo $gopath
        - run: pwd
        - run: go get
        - run: docker build -t go-docker
