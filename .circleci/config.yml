@@ -12,7 +12,7 @@
             sed -i "s/<replace>/$sha/g" metadata
             cat metadata
        - run:
-          name: Setting up golang environment and building go application to test locally.
+          name: Setting up golang environment and building go application to test locally
           command: | 
             export GOPATH=~/project
             export GOBIN=~/project
@@ -48,5 +48,5 @@
        - run:
           name: Publish Docker Image to Docker Hub
           command: |
-            docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASS"
-            docker push $IMAGE_NAME:latest
+            docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS"
+            docker push go-docker-api:latest
