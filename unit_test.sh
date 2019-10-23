@@ -19,6 +19,7 @@ is_expected_result_root()
         echo "result_root = $root_res"
     else
         echo "does not match"
+    fi
 }
 
 is_expected_result_status()
@@ -28,6 +29,7 @@ is_expected_result_status()
         echo "response found"
     else 
         echo "response not found"
+    fi
 }
 
 PARAMS=""
