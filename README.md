@@ -33,3 +33,5 @@ If you would like to run this maunal, these are the pre-steps to run.
  
  `docker rmi -f $(docker images --quiet --filter "dangling=true")`
 
+### Word on unit tests
+**Todo** go_test.go currently does not work -- In future required to be investigated further - temp measure - added shell script to curl each endpoint with an expected result.
