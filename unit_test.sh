@@ -7,7 +7,7 @@ curl_root()
 
 curl_status()
 {
-    status_res=`curl -s http://localhost:8080/status`
+    status_res=`curl http://localhost:8080/status`
 }
 
 is_expected_result_root()
