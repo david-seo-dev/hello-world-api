@@ -27,8 +27,6 @@
             # curling the points for maunal test -- however in future would like it to be more automatic
             curl http://localhost:8080
             curl http://localhost:8080/status
-            
-            echo "$DOCKERHUB_USER"
        - setup_remote_docker:
           docker_layer_caching: false
         
@@ -50,5 +48,5 @@
        - run:
           name: Publish Docker Image to Docker Hub
           command: |
-            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASS"
             docker push $IMAGE_NAME:latest
