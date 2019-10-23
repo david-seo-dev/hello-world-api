@@ -2,33 +2,40 @@
 
 curl_root()
 {
-    echo "root"
     root_res=`curl -s http://localhost:8080`
 }
 
 curl_status()
 {
-    echo "status"
     status_res=`curl -s http://localhost:8080/status`
 }
 
 is_expected_result_root()
 {
-    echo "root_res = $root_res"
+    root_match="false"
     if [ "$root_res" = "Hello, World" ]; then
-        echo "does match"
+        root_match="true"
     else
-        echo "does not match"
+        root_match="false"
     fi
 }
 
 is_expected_result_status()
 {
-    echo "status_res = $status_res"
+    status_match="false"
     if [ ! -z "$status_res" ]; then
-        echo "response found"
+        status_match="true"
     else 
-        echo "response not found"
+        status_match="false"
+    fi
+}
+
+does_expected_results_pass() {
+    if [ "$root_match" = "true" ] && [ "$status_match" = "true" ]; then
+        echo "basic unit tests PASSED"
+    else
+        echo "basic unit test FAILED"
+        exit 1
     fi
 }
 
@@ -59,3 +66,4 @@ curl_root
 curl_status
 is_expected_result_root
 is_expected_result_status
+does_expected_results_pass
