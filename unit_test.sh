@@ -14,12 +14,20 @@ curl_status()
 
 is_expected_result_root()
 {
-    echo "result_root = $root_res"
+    echo "root_res = $root_res"
+    if ["$root_res" = "Hello, World"]; then
+        echo "result_root = $root_res"
+    else
+        echo "does not match"
 }
 
 is_expected_result_status()
 {
-    echo "result_status = $status_res"
+    echo "status_res = $status_res"
+    if [ ! -z "$status_res" ]; then
+        echo "response found"
+    else 
+        echo "response not found"
 }
 
 PARAMS=""

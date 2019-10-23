@@ -26,7 +26,8 @@
             #go test -v
             ./main &
             # curling the points for maunal test - however in future would like it to be more automatic
-            sh unit_test.sh
+            sha=`git rev-parse HEAD`
+            sh unit_test.sh -s $sha
             echo "===="
             curl http://localhost:8080
             echo ""
