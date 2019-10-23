@@ -3,19 +3,19 @@
 curl_root()
 {
     echo "root"
-    root_res=`curl http://localhost:8080`
+    root_res=`curl -s http://localhost:8080`
 }
 
 curl_status()
 {
     echo "status"
-    status_res=`curl http://localhost:8080/status`
+    status_res=`curl -s http://localhost:8080/status`
 }
 
 is_expected_result_root()
 {
     echo "root_res = $root_res"
-    if [[ "$root_res" == "Hello, World" ]]; then
+    if [ "$root_res" = "Hello, World" ]; then
         echo "does match"
     else
         echo "does not match"
