@@ -48,4 +48,5 @@
           command: |
             docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS"
             docker images
+            TAG=0.1.$CIRCLE_BUILD_NUM
             docker push $DOCKERHUB_USER/go-docker-api:$TAG
