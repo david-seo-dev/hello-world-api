@@ -5,11 +5,14 @@
        - image: circleci/golang:1.8.6-jessie
      steps:
        - checkout
-       - run: | 
+       - run: 
+          name: Getting the last commit sha and modifying the metadata file
+          command: | 
             sha=`git rev-parse HEAD`
             sed -i "s/<replace>/$sha/g" metadata
             cat metadata
        - run:
+          name: Setting up golang environment and building go application to test locally.
           command: | 
             export GOPATH=~/project
             export GOBIN=~/project
@@ -49,10 +52,3 @@
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker push $IMAGE_NAME:latest
-            #docker run -d -p 8080:8080 --name go-docker-api-c go-docker-api
-            #docker ps
-            #curling into the docker remote environment doesn't seem to work
-            #curl --retry 10 http://localhost:8080
-            #curl --retry 10 http://localhost:8080/status
-            #docker exec go-docker-api-c curl --retry 10 --retry-connrefused http://localhost:8080
-            #docker exec go-docker-api-c curl --retry 10 --retry-connrefused http://localhost:8080/status
