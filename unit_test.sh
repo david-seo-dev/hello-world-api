@@ -15,8 +15,8 @@ curl_status()
 is_expected_result_root()
 {
     echo "root_res = $root_res"
-    if ["$root_res" = "Hello, World"]; then
-        echo "result_root = $root_res"
+    if [[ "$root_res" == "Hello, World" ]]; then
+        echo "does match"
     else
         echo "does not match"
     fi
