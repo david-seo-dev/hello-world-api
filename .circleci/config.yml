@@ -10,7 +10,6 @@
           command: | 
             sha=`git rev-parse HEAD`
             sed -i "s/<replace>/$sha/g" metadata
-            cat metadata
        - run:
           name: Setting up golang environment and building go application to test locally
           command: | 
@@ -22,7 +21,6 @@
             go build -o main .
             #unit test don't seem to work
             #go test -v
-            ls
             ./main &
             # curling the points for maunal test -- however in future would like it to be more automatic
             curl http://localhost:8080
@@ -40,7 +38,7 @@
             sudo mv /tmp/docker/* /usr/bin --force
        - run: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker build -t go-docker-api:latest .
+            docker build -t $DOCKERHUB_USER/go-docker-api:$TAG .
             docker version
             docker images
             docker ps
@@ -49,4 +47,5 @@
           name: Publish Docker Image to Docker Hub
           command: |
             docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS"
-            docker push go-docker-api:latest
+            docker images
+            docker push $DOCKERHUB_USER/go-docker-api:$TAG
