@@ -12,18 +12,24 @@
             sed -i "s/<replace>/$sha/g" metadata
        - run:
           name: Setting up golang environment and building go application to test locally
-          command: | 
+          command: |
+            #setting golang paths 
             export GOPATH=~/project
             export GOBIN=~/project
             export PATH=$PATH:$GOROOT/bin:$GOPATH:$GOBIN
+            #making sure source directory is available for go get
             mkdir src
+            #get golang dependency packages and build
             go get
             go build -o main .
             #unit test don't seem to work
             #go test -v
             ./main &
-            # curling the points for maunal test -- however in future would like it to be more automatic
+            # curling the points for maunal test - however in future would like it to be more automatic
+            sh unit_test.sh
+            echo "===="
             curl http://localhost:8080
+            echo ""
             curl http://localhost:8080/status
        - setup_remote_docker:
           docker_layer_caching: false
@@ -36,12 +42,11 @@
             curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             sudo mv /tmp/docker/* /usr/bin --force
-       - run: |
+       - run:
+          name: Build docker image 
+          command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
             docker build -t $DOCKERHUB_USER/go-docker-api:$TAG .
-            docker version
-            docker images
-            docker ps
 
        - run:
           name: Publish Docker Image to Docker Hub
